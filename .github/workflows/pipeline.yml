@@ -32,3 +32,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "pokemon1337" #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_APP_EMAIL}}
+          healthcheck: "https://pokemon1337.herokuapp.com/health"
+          checkstring: "ok"
+          delay: 5
+

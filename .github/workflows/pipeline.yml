@@ -33,10 +33,23 @@ jobs:
         if: ${{github.event_name == 'push'}}
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_api_key: ${{secrets.HEROKU_API_KEY }}
           heroku_app_name: "pokemon1337" #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_APP_EMAIL}}
           healthcheck: "https://pokemon1337.herokuapp.com/health"
           checkstring: "ok"
           delay: 5
           rollbackonhealthcheckfailed: true
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - name: Bump version and push tag
+      if: ${{github.event_name == 'push'}}
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.HEROKU_API_KEY }}
+        WITH_V: true

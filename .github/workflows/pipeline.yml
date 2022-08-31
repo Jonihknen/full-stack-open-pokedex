@@ -35,4 +35,4 @@ jobs:
           healthcheck: "https://pokemon1337.herokuapp.com/health"
           checkstring: "ok"
           delay: 5
-
+          rollbackonhealthcheckfailed: true

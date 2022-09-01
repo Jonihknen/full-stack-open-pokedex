@@ -42,14 +42,14 @@ jobs:
           rollbackonhealthcheckfailed: true
       - name: Test Success
         uses: rjstone/discord-webhook-notify@v1
-        if: ${{ success() && ${{github.event_name == 'push'}}}}
+        if: ${{ success() && github.event_name == 'push'}}
         with:
           severity: info
           details: Test Succeeded!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Failure
         uses: rjstone/discord-webhook-notify@v1
-        if: ${{ failure() && ${{github.event_name == 'push'}} }}
+        if: ${{ failure() &&  github.event_name == 'push' }}
         with:
           severity: error
           details: Test Failed!

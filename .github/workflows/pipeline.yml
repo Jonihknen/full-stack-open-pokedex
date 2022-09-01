@@ -41,6 +41,7 @@ jobs:
           delay: 5
           rollbackonhealthcheckfailed: true
       - name: Test Success
+        if: ${{github.event_name == 'push'}}
         uses: rjstone/discord-webhook-notify@v1
         if: ${{ success() }}
         with:
@@ -48,6 +49,7 @@ jobs:
           details: Test Succeeded!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Failure
+        if: ${{github.event_name == 'push'}}
         uses: rjstone/discord-webhook-notify@v1
         if: ${{ failure() }}
         with:

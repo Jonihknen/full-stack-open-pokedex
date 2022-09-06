@@ -2,7 +2,7 @@
 
 This repository is used for the CI/CD module of the Full stack open course
 
-exercise 11.20:
+exercise 11.20: <br />
 [exercise 11.20 github](https://github.com/Jonihknen/blogList-CICD) <br />
 [exercise 11.20 herokuapp](https://blog-123123.herokuapp.com/)<br />
 login: admin:admin
